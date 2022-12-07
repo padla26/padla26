@@ -1,3 +1,5 @@
+import os
+
 people = [
     ["Andrienko", "Yuri", 123456],
     ["Pupkin", "Vasya", 77777],
@@ -22,3 +24,18 @@ people = [
 
 for p in people:
     print(f'{p["lastName"]} {p["firstName"]} has salary {p["salary"]}')
+
+#НАйти максимальную зарплату в списке словарей
+candidate = 0
+for p in people:
+    if p["salary"] > candidate:
+        candidate = p["salary"]
+print(candidate)
+
+import os
+with open("data/people.csv", 'w') as f:
+    for p in people:
+        f.write(f"{p['lastName']};{p['firstName']};{p['salary']}\n")
+
+cmd = "start excel data\\people.csv"
+os.system(cmd)
